@@ -1,11 +1,13 @@
 package domain;
+
 public class Radio {
 
     private int currentStation;
+    private int currentVolume;
 
     public int getCurrentStation() {
         return currentStation;
-    };
+    }
 
     public void setCurrentStation(int newCurrentStation) {
         if (newCurrentStation < 0) {
@@ -15,45 +17,54 @@ public class Radio {
             return;
         }
         currentStation = newCurrentStation;
-    };
-
-    private int currentVolume;
+    }
 
     public int getCurrentVolume() {
         return currentVolume;
-    };
-
-    public void increaseVolume(int newCurrenVolume) {
-        if (newCurrenVolume == 10) {
-            currentVolume = newCurrenVolume;
-        } else {
-            currentVolume = newCurrenVolume + 1;
-        }
     }
 
-    public void decreaseVolume(int newCurrenVolume) {
-        if (newCurrenVolume == 0) {
-            currentVolume = newCurrenVolume;
-        } else {
-            currentVolume = newCurrenVolume - 1;
-        }
+    public void setCurrentVolume(int newCurrentVolume) {
+        currentVolume = newCurrentVolume;
     }
 
-    public int next(int station) {
-        if (station == 9) {
-            currentStation = 0;
+    public void increaseVolume() {
+        int volume;
+        if (currentVolume == 10) {
+            volume = currentVolume;
         } else {
-        currentStation = station + 1;
+            volume = currentVolume + 1;
         }
-        return currentStation;
+        currentVolume = volume;
     }
 
-    public void prev(int station) {
-        if (station == 0) {
-            currentStation = 9;
+    public void decreaseVolume() {
+        int volume;
+        if (currentVolume == 0) {
+            volume = currentVolume;
         } else {
-        currentStation = station - 1;
+            volume = currentVolume - 1;
         }
+        currentVolume = volume;
+    }
+
+    public void next() {
+        int station;
+        if (currentStation == 9) {
+            station = 0;
+        } else {
+            station = currentStation + 1;
+        }
+        currentStation = station;
+    }
+
+    public void prev() {
+        int station;
+        if (currentStation == 0) {
+            station = 9;
+        } else {
+            station = currentStation - 1;
+        }
+        currentStation = station;
     }
 
 }

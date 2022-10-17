@@ -3,9 +3,22 @@ package domain;
 public class Radio {
 
     private int currentStation;
-    private int currentVolume;
 
-    public int getCurrentStation() {
+    private int minVolume = 0;
+    private int maxVolume = 100;
+    private int currentVolume;
+    public int amount;
+
+
+    public Radio(int amount) {
+        this.amount = amount;
+    }
+
+    public Radio() {
+        this.amount = 10;
+    }
+
+     public int getCurrentStation() {
         return currentStation;
     }
 
@@ -13,7 +26,7 @@ public class Radio {
         if (newCurrentStation < 0) {
             return;
         }
-        if (newCurrentStation > 9) {
+        if (newCurrentStation > amount) {
             return;
         }
         currentStation = newCurrentStation;
@@ -29,7 +42,7 @@ public class Radio {
 
     public void increaseVolume() {
         int volume;
-        if (currentVolume == 10) {
+        if (currentVolume == maxVolume) {
             volume = currentVolume;
         } else {
             volume = currentVolume + 1;
@@ -39,7 +52,7 @@ public class Radio {
 
     public void decreaseVolume() {
         int volume;
-        if (currentVolume == 0) {
+        if (currentVolume == minVolume) {
             volume = currentVolume;
         } else {
             volume = currentVolume - 1;
@@ -49,7 +62,7 @@ public class Radio {
 
     public void next() {
         int station;
-        if (currentStation == 9) {
+        if (currentStation == amount - 1) {
             station = 0;
         } else {
             station = currentStation + 1;
@@ -60,7 +73,7 @@ public class Radio {
     public void prev() {
         int station;
         if (currentStation == 0) {
-            station = 9;
+            station = amount - 1;
         } else {
             station = currentStation - 1;
         }

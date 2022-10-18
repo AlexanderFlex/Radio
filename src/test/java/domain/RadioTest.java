@@ -9,7 +9,7 @@ public class RadioTest {
     @Test
     public void amountTest() {
         Radio amountRadio = new Radio(max);
-        Assertions.assertEquals(max, amountRadio.amount );
+       Assertions.assertEquals(max, amountRadio.amount );
     }
 
     @Test

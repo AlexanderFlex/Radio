@@ -1,27 +1,30 @@
 package domain;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+//@NoArgsConstructor
+//@AllArgsConstructor
+@RequiredArgsConstructor
+@Data
+
 public class Radio {
 
     private int currentStation;
-
-    private int minVolume = 0;
-    private int maxVolume = 100;
     private int currentVolume;
-    public int amount;
+    public final int amount;
 
-
-    public Radio(int amount) {
-        this.amount = amount;
-    }
+    //    public Radio(int amount) {
+//        this.amount = amount;
+//    }
 
     public Radio() {
         this.amount = 10;
     }
 
-     public int getCurrentStation() {
-        return currentStation;
-    }
-
+    //     public int getCurrentStation() {
+//        return currentStation;
+//    }
     public void setCurrentStation(int newCurrentStation) {
         if (newCurrentStation < 0) {
             return;
@@ -31,18 +34,18 @@ public class Radio {
         }
         currentStation = newCurrentStation;
     }
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public void setCurrentVolume(int newCurrentVolume) {
-        currentVolume = newCurrentVolume;
-    }
+//
+//    public int getCurrentVolume() {
+//        return currentVolume;
+//    }
+//
+//    public void setCurrentVolume(int newCurrentVolume) {
+//        currentVolume = newCurrentVolume;
+    //   }
 
     public void increaseVolume() {
         int volume;
-        if (currentVolume == maxVolume) {
+        if (currentVolume == 100) {
             volume = currentVolume;
         } else {
             volume = currentVolume + 1;
@@ -52,7 +55,7 @@ public class Radio {
 
     public void decreaseVolume() {
         int volume;
-        if (currentVolume == minVolume) {
+        if (currentVolume == 0) {
             volume = currentVolume;
         } else {
             volume = currentVolume - 1;
